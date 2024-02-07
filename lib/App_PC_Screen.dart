@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:local_notifier/local_notifier.dart';
 import 'package:youtube_explode_dart/youtube_explode_dart.dart';
 
 //https://pub.dev/packages/youtube_explode_dart the lib for youtube downloader
@@ -11,6 +12,10 @@ class HomeScreenPc extends StatefulWidget {
 }
 
 class _HomeScreenPcState extends State<HomeScreenPc> {
+  LocalNotification notification = LocalNotification(
+    title: "Downloader",
+    body: "Your Video is Ready 😉📺",
+  );
   late String audiosize ;
   late String videosize ;
   var search = TextEditingController();
@@ -123,6 +128,7 @@ class _HomeScreenPcState extends State<HomeScreenPc> {
                          print('Error');
                        }
                        print('downloading done');
+                       notification.show();
                      },child: Row(
                        children: [
                          Icon(Icons.ondemand_video_outlined,size: 30),
@@ -159,6 +165,7 @@ class _HomeScreenPcState extends State<HomeScreenPc> {
                          print('Error');
                        }
                        print('downloading done');
+                       notification.show();
                      },child: Row(
                        children: [
                          Icon(Icons.music_video,size: 30),
@@ -181,7 +188,7 @@ class _HomeScreenPcState extends State<HomeScreenPc> {
     String NewVideoName='';
     for(int i=0;i<title.length;i++)
     {
-      if(title[i]!=':'&&title[i]!='\\'&&title[i]!='.')
+      if(title[i]!=':'&&title[i]!='\\'&&title[i]!='.'&&title[i]!='|'&&title[i]!='?'&&title[i]!='<'&&title[i]!='>'&&title[i]!='*'&&title[i]!='"')
       {
         NewVideoName = NewVideoName+title[i];
       }
@@ -203,4 +210,5 @@ class _HomeScreenPcState extends State<HomeScreenPc> {
     print(downloadpath);
     return downloadpath;
   }
+
 }
