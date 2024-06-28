@@ -13,7 +13,6 @@ Main Screen
     Open the app.
     Paste the YouTube video URL.
     Select MP4 (720p) for video or MP3 for audio.
-    Click "Download".
     Select Download location.
     Receive a Windows notification when the download is complete.
 ## Contributing
